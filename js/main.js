@@ -1,3 +1,5 @@
+var cart = 0;
+
 function addItem(id, name, description, price, moreInfo) {
     let html = '';
     html += '<div class="item" data-id="' + id + '">';
@@ -8,7 +10,7 @@ function addItem(id, name, description, price, moreInfo) {
     html += '<button class="item-add">Add to cart</button>';
     html += '<button class="item-remove">Remove</button>';
     html += '<br>';
-    html += '<a class="more-info-link" href="#">More Info</a>';
+    html += '<a class="more-info-link" href="#">More info</a>';
     html += '<div class="more-info">' + moreInfo + '</div>';
     html += '</div>';
 
@@ -46,6 +48,7 @@ $(document).ready(function () {
         });
     $('#container').on('click', '.item-add', function () {
         let id = $(this).parent().data('id');
+        console.log(id);
         $.ajax('data/addToCart.json', {
             type: 'post',
             data: { id: id },
@@ -55,7 +58,9 @@ $(document).ready(function () {
         .done(function(response) {
             if (response.message === 'success') {
                 let price = response.price;
-                console.log(price);
+
+                cart += price;
+                $('#cart-container').text('$' + cart);
             }
         })
     });
