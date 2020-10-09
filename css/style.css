@@ -7,3 +7,12 @@
 .highlight {
     background-color: #34495e;
 }
+
+.box-button {
+    background-color: #16a085;
+    width: 20rem;
+    height: 2rem;
+    font-weight: bold;
+    color: white;
+    font-size: medium;
+}
