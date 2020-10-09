@@ -35,7 +35,7 @@ $(document).ready(function () {
     })
         .done(function (response) {
             let items = response.items;
-            console.log(items);
+            // console.log(items);
             items.forEach(function (item) {
                 addItem(item.id, item.name, item.description, item.price, item.moreInfo);
             });
@@ -63,5 +63,30 @@ $(document).ready(function () {
                 $('#cart-container').text('$' + cart);
             }
         })
+    });
+    $('#newsletter-checkbox').on('change', function() {
+        if ($(this).is(':checked')) {
+            $('#newsletter-frequency').fadeIn();
+        } else {
+            $('#newsletter-frequency').fadeOut();
+        }
+    });
+    $('#newsletter-checkbox').trigger('change');
+
+    $('#cart-form').on('submit', function(event) {
+        event.preventDefault();
+
+        let data = {form: $('#cart-form').serialize(), 
+        price: cart };
+
+        console.log(data.form);
+
+        $.ajax($(this).attr('action'), {
+            type: 'POST',
+            data: data
+        })
+        .done(function(response) {
+            $('#feedback-message').text(response.message);
+        });
     });
 });
