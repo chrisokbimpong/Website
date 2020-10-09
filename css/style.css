@@ -9,6 +9,13 @@ body {
     margin: 12px;
 }
 
+#cart-container {
+    width: 100%;
+    background-color: #000;
+    color: #FFF;
+    padding: 12px;
+}
+
 .item {
     width: 300px;
     background-color: #DDD;
