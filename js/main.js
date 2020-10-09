@@ -1,3 +1,5 @@
 $(document).ready(function(){
-    $('#container >>.non-solid').addClass('highlight');
+    $('.box').on('click', function() {
+        $(this).toggleClass('highlight');
+    });
 });

@@ -1,3 +1,9 @@
+.box {
+    width: 20rem;
+    height: 20rem;
+    background-color: #16a085;
+}
+
 .highlight {
-    color: #2980b9;
+    background-color: #34495e;
 }
